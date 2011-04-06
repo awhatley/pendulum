@@ -4,11 +4,13 @@ namespace Pendulum
 {
     public class SchedulePoller
     {
-        private TaskRepository _repository;
+        private readonly TaskRepository _repository;
+        private readonly TaskExecutor _executor;
 
         public SchedulePoller()
         {
             _repository = new TaskRepository();
+            _executor = new TaskExecutor();
         }
 
         public void Poll(ThreadController controller)
@@ -22,7 +24,8 @@ namespace Pendulum
                     var tasks = _repository.GetPendingTasks();
                     foreach(var task in tasks)
                     {
-                        // TODO: execute task
+                        var taskToRun = task;
+                        controller.Start(c => _executor.Execute(taskToRun, controller));
                     }
                 }
 
