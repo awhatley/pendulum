@@ -43,9 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduledTask.cs" />
     <Compile Include="SchedulePoller.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="SchedulerException.cs" />
+    <Compile Include="TaskRepository.cs" />
     <Compile Include="ThreadController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
