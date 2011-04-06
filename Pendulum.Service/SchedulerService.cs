@@ -16,6 +16,29 @@ namespace Pendulum.Service
             AutoLog = true;
         }
 
+        private Scheduler _scheduler;
+
+        protected override void OnStart(string[] args)
+        {
+            _scheduler = new Scheduler();
+            _scheduler.Start();
+        }
+
+        protected override void OnPause()
+        {
+            _scheduler.Pause();
+        }
+
+        protected override void OnContinue()
+        {
+            _scheduler.Resume();
+        }
+
+        protected override void OnStop()
+        {
+            _scheduler.Stop();
+        }
+
         public static void Main()
         {
             Run(new SchedulerService());
