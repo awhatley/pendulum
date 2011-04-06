@@ -8,6 +8,7 @@ namespace Pendulum
     public class Scheduler : IDisposable
     {
         private readonly ThreadController _controller;
+        private readonly SchedulePoller _poller;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scheduler"/> class.
@@ -15,6 +16,7 @@ namespace Pendulum
         public Scheduler()
         {
             _controller = new ThreadController();
+            _poller = new SchedulePoller();
         }
 
         /// <summary>
@@ -22,7 +24,7 @@ namespace Pendulum
         /// </summary>
         public void Start()
         {
-            _controller.Start(Poll);
+            _controller.Start(_poller.Poll);
         }
 
         /// <summary>
@@ -59,25 +61,6 @@ namespace Pendulum
             finally
             {
                 _controller.Dispose();
-            }
-        }
-
-        private static void Poll(ThreadController controller)
-        {
-            controller.Wait(); // check for pause/abort
-
-            while(true)
-            {
-                try
-                {
-                    // TODO: get task details and execute
-                }
-
-                finally
-                {
-                    // TODO: configurable polling interval
-                    controller.Wait(TimeSpan.FromMinutes(1));
-                }
             }
         }
 
