@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.ServiceProcess;
 
 namespace Pendulum.Service
@@ -36,7 +37,18 @@ namespace Pendulum.Service
 
         protected override void OnStop()
         {
-            _scheduler.Stop();
+            try
+            {
+                _scheduler.Stop();
+            }
+
+            catch(SchedulerException ex)
+            {
+                foreach(var error in ex.Errors)
+                {
+                    EventLog.WriteEntry(ex.Message, EventLogEntryType.Error);
+                }
+            }
         }
 
         public static void Main()

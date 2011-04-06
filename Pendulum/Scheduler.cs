@@ -51,6 +51,11 @@ namespace Pendulum
                 _controller.Stop();
             }
 
+            catch(AggregateException ex)
+            {
+                throw new SchedulerException(ex);
+            }
+
             finally
             {
                 _controller.Dispose();
