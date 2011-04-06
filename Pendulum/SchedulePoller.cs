@@ -4,6 +4,13 @@ namespace Pendulum
 {
     public class SchedulePoller
     {
+        private TaskRepository _repository;
+
+        public SchedulePoller()
+        {
+            _repository = new TaskRepository();
+        }
+
         public void Poll(ThreadController controller)
         {
             controller.Wait(); // check for pause/abort
@@ -12,7 +19,11 @@ namespace Pendulum
             {
                 try
                 {
-                    // TODO: get task details and execute
+                    var tasks = _repository.GetPendingTasks();
+                    foreach(var task in tasks)
+                    {
+                        // TODO: execute task
+                    }
                 }
 
                 finally
