@@ -22,7 +22,7 @@ namespace Pendulum
         /// </summary>
         public void Start()
         {
-            _controller.Start();
+            _controller.Start(Poll);
         }
 
         /// <summary>
@@ -59,6 +59,25 @@ namespace Pendulum
             finally
             {
                 _controller.Dispose();
+            }
+        }
+
+        private static void Poll(ThreadController controller)
+        {
+            controller.Wait(); // check for pause/abort
+
+            while(true)
+            {
+                try
+                {
+                    // TODO: get task details and execute
+                }
+
+                finally
+                {
+                    // TODO: configurable polling interval
+                    controller.Wait(TimeSpan.FromMinutes(1));
+                }
             }
         }
 
