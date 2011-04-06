@@ -47,6 +47,7 @@
     <Compile Include="SchedulePoller.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="SchedulerException.cs" />
+    <Compile Include="TaskExecutor.cs" />
     <Compile Include="TaskRepository.cs" />
     <Compile Include="ThreadController.cs" />
   </ItemGroup>
