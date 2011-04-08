@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,12 +46,20 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduledTask.cs" />
+    <Compile Include="ScheduledTaskExecution.cs" />
     <Compile Include="SchedulePoller.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="SchedulerException.cs" />
     <Compile Include="TaskExecutor.cs" />
     <Compile Include="TaskRepository.cs" />
+    <Compile Include="TaskStatus.cs" />
     <Compile Include="ThreadController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pendulum.Contracts\Pendulum.Contracts.csproj">
+      <Project>{E3FF6CDA-A995-4413-AFAD-83FE1817685A}</Project>
+      <Name>Pendulum.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
