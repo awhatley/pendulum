@@ -46,7 +46,7 @@ namespace Pendulum.Service
             {
                 foreach(var error in ex.Errors)
                 {
-                    EventLog.WriteEntry(ex.Message, EventLogEntryType.Error);
+                    EventLog.WriteEntry(error.Message, EventLogEntryType.Error);
                 }
             }
         }
