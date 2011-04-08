@@ -10,7 +10,7 @@ namespace Pendulum
         public SchedulePoller()
         {
             _repository = new TaskRepository();
-            _executor = new TaskExecutor();
+            _executor = new TaskExecutor(_repository);
         }
 
         public void Poll(ThreadController controller)
