@@ -59,7 +59,7 @@ namespace Pendulum
         {
             try
             {
-                var binding = (Binding)Activator.CreateInstance(task.BindingType);
+                var binding = (Binding)Activator.CreateInstance(Type.GetType(task.BindingType));
                 binding.SendTimeout = task.SendTimeout;
                 binding.ReceiveTimeout = task.ReceiveTimeout;
                 
